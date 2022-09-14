@@ -15,12 +15,18 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   entryComponents: [],
-  imports: [HttpClientModule,BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    HttpClientModule,
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+  ],
   providers: [
     StatusBar,
-    SplashScreen,HttpClientModule,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    SplashScreen,
+    HttpClientModule,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -8,36 +8,33 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['detail.page.scss'],
 })
 export class DetailPage implements OnInit, OnDestroy {
-
   cep: any;
-  constructor(private router: Router, 
-    private activatedRoute: ActivatedRoute, 
-    private http: HttpClient) {}
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private http: HttpClient
+  ) {}
 
   goBack() {
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {
-    // With Routing in Ionic, The OnInit lifecycle hook 
+    // With Routing in Ionic, The OnInit lifecycle hook
     // may not get called consistently.
-    console.log("DetailPage - OnInit");
-    let id=this.activatedRoute.snapshot.paramMap.get('id');
-    this.http.get(`https://viacep.com.br/ws//json/`).subscribe(res=>{
-      this.cep=res;
+    console.log('DetailPage - OnInit');
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.http.get(`https://viacep.com.br/ws//json/`).subscribe((res) => {
+      this.cep = res;
     });
-  }
-
-  ngOnsearch: any-outline() {
-    console.log("Detail")
   }
 
   ngOnDestroy() {
     // Likewise, this will may not consistently fire when you navigate away
     // from the component
-    console.log("DetailPage - OnDestroy")
+    console.log('DetailPage - OnDestroy');
   }
-    
+
   // However, Ionic provides lifecycle hooks of its own that
   // will fire consistently during route navigation
 
@@ -45,14 +42,13 @@ export class DetailPage implements OnInit, OnDestroy {
     // This method will be called every time the component is navigated to
     // On initialization, both ngOnInit and this method will be called
 
-    console.log("DetailPage - ViewWillEnter")
+    console.log('DetailPage - ViewWillEnter');
   }
 
   ionViewWillLeave() {
     // This method will be called every time the component is navigated away from
     // It would be a good method to call cleanup code such as unsubscribing from observables
 
-    console.log("DetailPage - ViewWillLeave")
+    console.log('DetailPage - ViewWillLeave');
   }
-
 }
